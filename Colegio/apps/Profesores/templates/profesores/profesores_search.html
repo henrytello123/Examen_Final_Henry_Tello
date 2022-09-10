@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Buscador de profesores</title>
+</head>
+<body>
+<title>Profesores</title><h1 class="title">Buscador de Profesores</h1>
+
+<form action="" method="GET">
+       <label>Búsqueda: </label>
+       <input type="text" name="q" value="{{query|escape}}">
+   </form>
+
+   {% if query %}
+       <h2>Resultado para "{{ query|escape }}"</h2>
+
+       {% if data %}
+           <ul>
+               {% for profesores in data %}
+                   <li>{{ profesores.nombre }} es un profesor procedente de {{ profesores.procedencia }}</li>
+               {% endfor %}
+           </ul>
+       {% else %}
+           <p>No se han encontrado profesores</p>
+       {% endif %}
+   {% endif %}
+
+</body>
+</html>
